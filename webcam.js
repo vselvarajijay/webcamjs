@@ -64,7 +64,8 @@ var Webcam = {
 		}
 	},
 	
-	attach: function(elem) {
+	attach: function(elem, videoSource) {
+	    videoSource = typeof videoSource !== 'undefined' ? videoSource : "";
 		// create webcam preview and attach to DOM element
 		// pass in actual DOM reference, ID, or CSS selector
 		if (typeof(elem) == 'string') {
@@ -123,6 +124,12 @@ var Webcam = {
 			
 			// ask user for access to their camera
 			var self = this;
+			var constraints = {
+			    "audio": false,
+			    "video": {
+			        "optional": [{"sourceId": videoSource}]
+			    }
+			}
 			navigator.getUserMedia({
 				"audio": false,
 				"video": true
