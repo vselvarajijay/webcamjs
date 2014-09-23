@@ -130,10 +130,7 @@ var Webcam = {
 			        "optional": [{"sourceId": videoSource}]
 			    }
 			}
-			navigator.getUserMedia({
-				"audio": false,
-				"video": true
-			}, 
+			navigator.getUserMedia(constraints,
 			function(stream) {
 				// got access, attach stream to video
 				video.src = window.URL.createObjectURL( stream ) || stream;
